@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tag which specifies charset should be within first 1024 bytes -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Facebook – log in or sign up</title>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png">
+    <link rel="manifest" href="../favicons/manifest.json">
+    <link rel="mask-icon" href="../favicons/safari-pinned-tab.svg">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Lato Font (looking for alternative to Helvetica :( ) -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <!-- Open Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
+    <!-- Bootstrap css CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/fb.css" />
+    <link type="text/css" rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body>
+
+    <!-- Navbar (login bar) -->
+    <nav class="navbar navbar-expand-lg fb-color">
+      <a class="navbar-brand ml-sm-4 fb-brand" href="index.html">facebook</a>
+
+      <div class="collapse navbar-collapse">
+        <form class="form-inline ml-auto">
+          <input class="form-control form-control-sm mr-sm-2" type="email" placeholder="Email">
+          <input class="form-control form-control-sm mr-sm-2" type="password" placeholder="Password">
+          <button class="btn btn-sm fb-btn mr-sm-4" type="submit">Log In</button>
+        </form>
+      </div>
+    </nav>
+
+    <div id="parent">
+      <div id="welcome" class="item">
+        <span id="quotation" class="fb-color-text">
+          Facebook helps you connect and share with the people in your life.
+        </span>
+        <img src="images/fb-thankyou-transparent-header.png" class="img-fluid" alt="Thank you for stopping by.">
+      </div>
+
+      <div id="register" class="item">
+        <span id="r_head">Create a new account</span>
+        <span id="r_subhead">It's free and always will be.</span>
+
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input type="text" class="form-control" id="firstname" placeholder="First name">
+            </div>
+            <div class="form-group col-md-6">
+              <input type="text" class="form-control" id="surname" placeholder="Surname">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" id="email" placeholder="Mobile number or email address">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="password" placeholder="New password">
+          </div>
+
+          <div>Birthday</div>
+          <div class="form-row form-row-fix">
+            <div class="form-group">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Day
+                </button>
+                <div class="dropdown-menu" id="day" aria-labelledby="dropdownMenu"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Month
+                </button>
+                <div class="dropdown-menu" id="month" aria-labelledby="dropdownMenu"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Year
+                </button>
+                <div class="dropdown-menu" id="year" aria-labelledby="dropdownMenu"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="gender" id="male" value="male"> Male
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="gender" id="female" value="female"> Female
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn fb-btn" id="register_btn">Create Account</button>
+          <hr />
+          <small id="tcblock" class="form-text text-muted">
+            This design is inspired by original facebook website and the images used may be subjected to copyright.
+          </small>
+        </form>
+
+      </div>
+    </div>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Popper.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <!-- Bootstrap js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <!-- Our own js -->
+    <script src="js/index.js"></script>
+
+  </body>
+</html>
