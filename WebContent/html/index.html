@@ -8,11 +8,11 @@
     <title>Facebook – log in or sign up</title>
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png">
-    <link rel="manifest" href="../favicons/manifest.json">
-    <link rel="mask-icon" href="../favicons/safari-pinned-tab.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="manifest" href="favicons/manifest.json">
+    <link rel="mask-icon" href="favicons/safari-pinned-tab.svg">
     <meta name="theme-color" content="#ffffff">
 
     <!-- Lato Font (looking for alternative to Helvetica :( ) -->
@@ -33,9 +33,9 @@
 
       <div class="collapse navbar-collapse">
         <form class="form-inline ml-auto">
-          <input class="form-control form-control-sm mr-sm-2" type="email" placeholder="Email">
-          <input class="form-control form-control-sm mr-sm-2" type="password" placeholder="Password">
-          <button class="btn btn-sm fb-btn mr-sm-4" type="submit">Log In</button>
+          <input class="form-control form-control-sm mr-sm-2" type="email" id="inp_email" placeholder="Email">
+          <input class="form-control form-control-sm mr-sm-2" type="password" id="inp_pwd" placeholder="Password">
+          <button class="btn btn-sm fb-btn mr-sm-4" id="login_btn" type="submit">Log In</button>
         </form>
       </div>
     </nav>
@@ -52,7 +52,7 @@
         <span id="r_head">Create a new account</span>
         <span id="r_subhead">It's free and always will be.</span>
 
-        <form>
+        <form id="registerForm">
           <div class="form-row">
             <div class="form-group col-md-6">
               <input type="text" class="form-control" id="firstname" placeholder="First name">
@@ -102,12 +102,12 @@
           <div class="form-group">
             <div class="form-check form-check-inline">
               <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="gender" id="male" value="male"> Male
+                <input class="form-check-input" type="radio" name="gender" id="male" value="M"> Male
               </label>
             </div>
             <div class="form-check form-check-inline">
               <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="gender" id="female" value="female"> Female
+                <input class="form-check-input" type="radio" name="gender" id="female" value="F"> Female
               </label>
             </div>
           </div>
