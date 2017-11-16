@@ -1,5 +1,5 @@
-/* This js file assumes that you link it at the end of the html file */
 setupDate();
+
 $("#register_btn").click(function(e){
 	e.preventDefault();
 	$.ajax({
@@ -15,28 +15,6 @@ $("#register_btn").click(function(e){
 		},
 		url: "/facebook-http/Register",
 		method: 'POST',
-		success: function(response){
-			console.log(response);
-			if(response.status){
-				window.location.href = "http://localhost:8080/facebook-http/html/home.html";
-			}
-		},
-		error: function(error){
-			console.log(error);
-		}
-	});
-});
-
-$("#login_btn").click(function(e){
-	e.preventDefault();
-	$.ajax({
-		data: {
-			email: $("#inp_email").val(),
-			password: $("#inp_pwd").val()
-		},
-		url: "/facebook-http/Login",
-		method: 'POST',
-		dataType: 'json',
 		success: function(response){
 			console.log(response);
 			if(response.status){
@@ -86,7 +64,7 @@ function setupDate(){
     /* Setup year */
     for(var i=1905; i<2018; i++)
       document.getElementById("year").appendChild(genOption(i));
-    
+
     /* Register Clicks */
     $(".dropdown-menu button").click(function(e){
     	e.preventDefault();

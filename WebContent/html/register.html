@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tag which specifies charset should be within first 1024 bytes -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Facebook – sign up</title>
+
+    <!-- Lato Font (looking for alternative to Helvetica :( ) -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+    <!-- Bootstrap css CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="../css/common.css" />
+    <link type="text/css" rel="stylesheet" href="../css/register.css" />
+  </head>
+
+  <body>
+
+    <div id="rightbar">
+      <div class="form-group welcomeForm">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="firstname" placeholder="First name">
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="surname" placeholder="Surname">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="email" placeholder="Mobile number or email address">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="password" placeholder="New password">
+        </div>
+
+        <div class="break">Birthday</div>
+        <div class="form-row form-row-fix">
+          <div class="form-group">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Day
+              </button>
+              <div class="dropdown-menu" id="day" aria-labelledby="dropdownMenu"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Month
+              </button>
+              <div class="dropdown-menu" id="month" aria-labelledby="dropdownMenu"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Year
+              </button>
+              <div class="dropdown-menu" id="year" aria-labelledby="dropdownMenu"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group break">
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gender" id="male" value="M"> Male
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gender" id="female" value="F"> Female
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn" id="register_btn">Create Account</button>
+        <hr />
+        <small class="form-text text-muted formlink">
+          Already a member? <a href="/facebook-http/html/login.html">Sign in</a>
+        </small>
+      </div>
+    </div>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Popper.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <!-- Bootstrap js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <!-- Our own js -->
+    <script src="../js/register.js"></script>
+
+  </body>
+</html>

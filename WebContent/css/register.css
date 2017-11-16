@@ -1,0 +1,95 @@
+body{
+  background: url(../images/bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#rightbar{
+  position: relative;
+  z-index: 1;
+  width: 30%;
+  height: 100vh;
+  margin-left: 70%;
+}
+
+#rightbar::before{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  opacity: .8;
+}
+
+.break{
+  margin-top: 30px;
+}
+
+.formlink{
+  text-align: center;
+}
+
+.formlink a{
+  padding-left: 5px;
+  color: #fff;
+}
+
+.welcomeForm{
+  width: 60%;
+  margin: 0 auto;
+  float: none;
+  padding-top: 50%;
+  color: white;
+}
+
+.welcomeForm .form-group{
+  margin-bottom: 10px;
+}
+
+.welcomeForm input{
+  background: transparent;
+  border-radius: 0;
+  color: #fff;
+}
+
+.welcomeForm input:focus{
+  border-color: #fff;
+  box-shadow: none;
+  background: transparent;
+  color: #fff;
+}
+
+.welcomeForm .dropdown-toggle{
+  background: transparent;
+  border-radius: 0;
+  color: #a9a9a9; /* Default placeholder color for chrome */
+}
+
+.welcomeForm .dropdown-toggle:focus{
+  border-color: #fff;
+  box-shadow: none;
+}
+
+.welcomeForm .btn{
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.welcomeForm .dropdown{
+  font-size: 0.9em;
+  margin-top: 7px;
+  margin-right: 5px;
+}
+
+.welcomeForm .dropdown-menu{
+  height: 300px;
+  min-width: 20px !important;
+  overflow: auto;
+}
