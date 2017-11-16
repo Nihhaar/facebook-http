@@ -127,9 +127,16 @@ body{
 }
 
 #img-holder{
-  height: 200px;
+  height: 300px;
   border: 1px solid #aaa;
-  margin-bottom: 10px;
+  background: url('');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 15px;
+}
+
+#getfile{
+  display: none;
 }
 
 /*

@@ -19,12 +19,9 @@ public class DbHandler {
 	
 	public static JSONObject authenticate(String email, String password, HttpServletRequest request){		
 		JSONObject obj = new JSONObject();
-		try{
-			// Create the connection
-			Connection conn = DriverManager.getConnection(connString, userName, passWord);
-			String query = "SELECT * FROM password WHERE email = ?;";
-			System.out.println(email);
-			PreparedStatement preparedStmt = conn.prepareStatement(query);
+		try(Connection conn = DriverManager.getConnection(connString, userName, passWord);
+			PreparedStatement preparedStmt = conn.prepareStatement("SELECT * FROM password WHERE email = ?;");)
+		{
 			preparedStmt.setString(1, email);
 			ResultSet result =  preparedStmt.executeQuery();
 			result.next();
@@ -35,7 +32,7 @@ public class DbHandler {
 				flag = Utils.validatePassword(password, storedPassword);
 			}
 			if(flag){
-				String uid = result.getString(1);
+				int uid = result.getInt(1);
 				request.getSession(true).setAttribute("uid", uid);
 				obj.put("status",true);				
 				obj.put("data", uid);
@@ -44,8 +41,6 @@ public class DbHandler {
 				obj.put("status",false);
 				obj.put("message", "Authentication Failed");					
 			}
-			preparedStmt.close();
-			conn.close();
 		} 
 		catch(Exception e){
 			e.printStackTrace();
@@ -55,17 +50,11 @@ public class DbHandler {
 	
 	public static boolean createAccount(HttpServletRequest request, String firstName, String surName, String email, String password, long time, char gender){
 		boolean flag = true;
-		try{
-			// Create the connection
-			Connection conn = DriverManager.getConnection(connString, userName, passWord);
-			String update1 = "INSERT INTO fbuser (firstname, surname, email, birthday, gender) VALUES (?, ?, ?, ?, ?);";
-			String query = "SELECT uid FROM fbuser WHERE email = ?;";
-			String update2 = "INSERT INTO password VALUES (?, ?, ?);";
-			
-			PreparedStatement preparedStmt = conn.prepareStatement(query);
-			PreparedStatement preparedStmt1 = conn.prepareStatement(update1);
-			PreparedStatement preparedStmt2 = conn.prepareStatement(update2);
-			
+		try(Connection conn = DriverManager.getConnection(connString, userName, passWord);
+			PreparedStatement preparedStmt = conn.prepareStatement("SELECT uid FROM fbuser WHERE email = ?;");
+			PreparedStatement preparedStmt1 = conn.prepareStatement("INSERT INTO fbuser (firstname, surname, email, birthday, gender) VALUES (?, ?, ?, ?, ?);");
+			PreparedStatement preparedStmt2 = conn.prepareStatement("INSERT INTO password VALUES (?, ?, ?);");)
+		{
 			preparedStmt1.setString(1, firstName);
 			preparedStmt1.setString(2, surName);
 			preparedStmt1.setString(3, email);
@@ -92,6 +81,51 @@ public class DbHandler {
 			e.printStackTrace();
 		}
 		return flag;
+	}
+	
+	public static int createpost(int uid, String postText, boolean hasImg)
+	{
+		int postid = 0;
+		try(Connection conn = DriverManager.getConnection(connString, userName, passWord);
+			PreparedStatement pStmt = conn.prepareStatement("INSERT INTO post(uid, timestamp, text, likes, hasImage) values(?, CURRENT_TIMESTAMP, ?, ?, ?) RETURNING postid;");)
+		{   
+			pStmt.setInt(1, uid);
+			pStmt.setString(2, postText);
+			pStmt.setInt(3, 0);
+			pStmt.setBoolean(4, hasImg);
+			ResultSet rset = pStmt.executeQuery();
+			rset.next();
+			postid = rset.getInt(1);
+		}catch (Exception sqle)
+		{
+			sqle.printStackTrace();
+		}
+		return postid;
+	}
+	
+	public static JSONObject insertImage(int postid, String imagePath){
+		JSONObject obj = new JSONObject();
+		try(Connection conn = DriverManager.getConnection(connString, userName, passWord);
+			PreparedStatement pStmt = conn.prepareStatement("INSERT INTO image(postid, imgpath) VALUES(?, ?);");)
+		{   
+			pStmt.setInt(1, postid);
+			pStmt.setString(2, imagePath);
+			
+			if(pStmt.executeUpdate() > 0)
+			{
+				obj.put("status", true);
+				obj.put("data","Uploaded Image Path");				
+			}
+			else
+			{
+				obj.put("status",false);
+				obj.put("message", "Unable to upload image path");
+			}	
+		}catch (Exception sqle)
+		{
+			sqle.printStackTrace();
+		}
+		return obj;
 	}
 
 }

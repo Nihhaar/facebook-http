@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Random;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -11,6 +12,9 @@ import javax.crypto.spec.PBEKeySpec;
 public class Utils {
 	
 	private static int iterations = 1000;
+	private static int N = 2;
+	public static String imgData = "/home/nihhaar/fbdata";
+	public static String imgMimeType = ".jpeg"; /* Lets say we currently support only jpeg type. For additional types, use image compression on client side */
 	
 	/*
 	 * Example of generated Password Hash: 
@@ -78,5 +82,28 @@ public class Utils {
         }
         return bytes;
     }
+	
+	public static String convertStreamToString(java.io.InputStream is) {
+	    try(java.util.Scanner s = new java.util.Scanner(is)) 
+	    { 
+	    	return s.useDelimiter("\\A").hasNext() ? s.next() : ""; 
+	    }
+	}
+	
+	/*
+	 * from: https://stackoverflow.com/questions/2978803/help-for-creating-a-random-string
+	 */
+	public static String randomName() {
+		Random r = new Random(); // just create one and keep it around
+	    String alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+	    StringBuilder sb = new StringBuilder();
+	    for (int i = 0; i < N; i++) {
+	        sb.append(alphabet.charAt(r.nextInt(alphabet.length())));
+	    }
+	    String randomName = sb.toString();
+	    
+	    return randomName;
+	}
 	
 }

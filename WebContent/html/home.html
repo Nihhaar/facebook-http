@@ -8,11 +8,11 @@
     <title>Facebook</title>
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-    <link rel="manifest" href="favicons/manifest.json">
-    <link rel="mask-icon" href="favicons/safari-pinned-tab.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png">
+    <link rel="manifest" href="../favicons/manifest.json">
+    <link rel="mask-icon" href="../favicons/safari-pinned-tab.svg">
     <meta name="theme-color" content="#ffffff">
 
     <!-- Lato Font (looking for alternative to Helvetica :( ) -->
@@ -21,11 +21,11 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
     <!-- Bootstrap css CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="css/fb.css" />
-    <link type="text/css" rel="stylesheet" href="css/home.css" />
+    <link type="text/css" rel="stylesheet" href="../css/fb.css" />
+    <link type="text/css" rel="stylesheet" href="../css/home.css" />
 
     <!-- Font Awesome js -->
-    <script src="https://use.fontawesome.com/7611acd2f8.js"></script>
+    <!-- <script src="https://use.fontawesome.com/7611acd2f8.js"></script> -->
   </head>
 
   <body>
@@ -48,13 +48,13 @@
             <a class="nav-link" href="#">Home</a>
           </li>
           <li class="nav-item img">
-            <img src="glyphicons/glyphicons-25-parents.png" alt="glyphicons parents icon" height="19" width="23"/>
+            <img src="../glyphicons/glyphicons-25-parents.png" alt="glyphicons parents icon" height="19" width="23"/>
           </li>
           <li class="nav-item img">
-            <img src="glyphicons/messenger-shareicon.png" alt="messenger icon" height="24" width="24"/>
+            <img src="../glyphicons/messenger-shareicon.png" alt="messenger icon" height="24" width="24"/>
           </li>
           <li class="nav-item img">
-            <img src="glyphicons/glyphicons-341-globe.png" alt="glyphicons globe icon" height="20" width="20"/>
+            <img src="../glyphicons/glyphicons-341-globe.png" alt="glyphicons globe icon" height="20" width="20"/>
           </li>
           <li class="nav-item img">
             <span class="caret caret-reversed"></span>
@@ -135,11 +135,12 @@
                 Compose post
               </div>
               <div class="card-body">
-                <textarea class="card-text" rows="3" cols="50" placeholder="What's on your mind?"></textarea>
+                <textarea id="post-text" class="card-text" rows="3" cols="50" placeholder="What's on your mind?"></textarea>
                 <div id="img-holder"></div>
-                <a href="#" class="card-link">Photo/Video</a>
+                <input type='file' id='getfile' name="background-image" />
+                <a href="#" id="upload" class="card-link">Photo/Video</a>
                 <a href="#" class="card-link">Feeling/Activity</a>
-                <button class="btn fb-btn" id="post_btn">Post</a>
+                <button class="btn fb-btn" id="post_btn">Post</button>
               </div>
             </div>
 
@@ -191,8 +192,8 @@
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Popper.js CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <!-- Popper.js Local -->
+    <script src="../js/popper-1.12.3.js"></script>
     <!-- Bootstrap js CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
     <!-- Our own js -->

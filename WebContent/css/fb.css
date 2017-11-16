@@ -17,6 +17,10 @@ body{
   color: #0E385F;
 }
 
+.fb-color-title{
+  color: #3B5998;
+}
+
 .fb-brand {
   color: #fff;
   font-size: 1.8em;
@@ -47,6 +51,16 @@ body{
   appearance: none;
   box-shadow: none;
   border-radius: 0;
+}
+
+.fb-logo{
+  color: #fff;
+  font-size: 3.0em;
+}
+
+.fb-post-card{
+  width: 100%;
+  margin: 10px 0;
 }
 
 .form-row-fix{  /* Temporary fix for form-group inside form-row withour col-*-* classes */

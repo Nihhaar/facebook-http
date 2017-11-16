@@ -2,7 +2,6 @@
 setupDate();
 $("#register_btn").click(function(e){
 	e.preventDefault();
-	console.log("Gender: " + $('input[name=gender]:checked', '#registerForm').val());
 	$.ajax({
 		data: {
 			fname: $("#firstname").val(),
@@ -18,6 +17,9 @@ $("#register_btn").click(function(e){
 		method: 'POST',
 		success: function(response){
 			console.log(response);
+			if(response.status){
+				window.location.href = "http://localhost:8080/facebook-http/html/home.html";
+			}
 		},
 		error: function(error){
 			console.log(error);
@@ -88,7 +90,6 @@ function setupDate(){
     /* Register Clicks */
     $(".dropdown-menu button").click(function(e){
     	e.preventDefault();
-    	console.log("Clicked!");
         $(this).parent().prev().text($(this).text());
     });
 }
