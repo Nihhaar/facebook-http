@@ -1,5 +1,6 @@
 create sequence if not exists postid start 1;
 create sequence if not exists uid start 1;
+create sequence if not exists imageid start 1;
 CREATE DOMAIN GENDER CHAR(1)
     CHECK (value IN ( 'F' , 'M' ) );
 
@@ -60,15 +61,22 @@ CREATE TABLE friends(
 );
 
 CREATE TABLE post (
-	postid 		int default nextval('postid'),
+	postid 		int primary key default nextval('postid'),
 	uid		int references fbuser on delete cascade,
 	timestamp	TIMESTAMP,
 	text		TEXT,
 	likes       	int,
-	PRIMARY KEY (uid),
+	hasImage	BOOLEAN DEFAULT FALSE,
 	FOREIGN KEY (uid) REFERENCES fbuser(uid)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE
 );
 
-
+CREATE TABLE image(
+	imageid 	int primary key default nextval('imageid'),
+	postid 		int references post on delete cascade,
+	imgpath		VARCHAR(30) not null,
+	FOREIGN KEY (postid) REFERENCES post(postid)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);

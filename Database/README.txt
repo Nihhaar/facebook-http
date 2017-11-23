@@ -4,8 +4,3 @@
 
 mkdir ~/fbdata
 mkdir ~/fbdata/posts
-
-# Run the http server in the "fbdata" folder
-
-cd ~/fbdata
-python3 -m http.server 8000

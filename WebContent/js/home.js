@@ -1,34 +1,81 @@
-document.getElementById('getfile').addEventListener('change', readURL, true);
+document.getElementById('getfile1').addEventListener('change', readProfilePic, true);
+document.getElementById('getfile2').addEventListener('change', readURL, true);
 
 /* uploading files by clicking anchor tag */
 $(function(){
-    $("#upload").on('click', function(e){
-        e.preventDefault();
-        $("#getfile:hidden").trigger('click');
-    });
+  $('.antiscroll-wrap').antiscroll();
+
+  $("#profilepic").on('click', function(e){
+      e.preventDefault();
+      $("#getfile1:hidden").trigger('click');
+  });
+
+  $("#upload").on('click', function(e){
+      e.preventDefault();
+      $("#getfile2:hidden").trigger('click');
+  });
 });
 
+function readProfilePic(){
+   var file = document.getElementById("getfile1").files[0];
+   var reader = new FileReader();
+   var src = $("#profilepic").attr("src");
+
+   if(file){
+     var bgImg = new Image();
+     bgImg.onload = function(){
+       $("#profilepic").attr("src", '../gifs/loading.gif');
+       var formData = new FormData();
+       formData.append('picture', file);
+    	 setTimeout(function(){
+          $.ajax({
+            url: '/facebook-http/ChangeProfilePic',
+            method: 'POST',
+            // Form data
+            data: formData,
+            // Tell jQuery not to process data or worry about content-type
+            // You *must* include these options!
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(response){
+          	  console.log(response);
+          	  $("#profilepic").attr("src", bgImg.src);
+            },
+            error: function(error){
+          	  console.log(error);
+              $("#profilepic").attr("src", src);
+            }
+         });
+       }, 1000);
+     };
+     bgImg.src = window.URL.createObjectURL(file);
+   }
+}
+
 function readURL(){
+   var $div = $("<div>", {id: "img-holder"});
+   $div.insertAfter($("#post-text"));
    var imgHolder = document.getElementById('img-holder');
    var file = document.getElementById("getfile").files[0];
    var reader = new FileReader();
 
    if(file){
-	 imgHolder.style.backgroundSize = 'initial';
+	   imgHolder.style.backgroundSize = 'initial';
      imgHolder.style.backgroundImage = "url('../gifs/loading.gif')";
      var bgImg = new Image();
      bgImg.onload = function(){
     	 setTimeout(function(){
     		 imgHolder.style.backgroundSize = 'cover';
         	 imgHolder.style.backgroundImage = 'url(' + bgImg.src + ')';
-         }, 1000);
+       }, 1000);
      };
      bgImg.src = window.URL.createObjectURL(file);
-     
+
      var formData = new FormData();
      formData.append('picture', file);
      formData.append('text', $("#post-text").val());
-     
+
 	 $("#post_btn").click(function(e){
        e.preventDefault();
        $.ajax({
@@ -43,7 +90,7 @@ function readURL(){
           cache: false,
           contentType: false,
           processData: false,
-          
+
           success: function(response){
         	  console.log(response);
         	  /*if(!response.status){
@@ -54,6 +101,8 @@ function readURL(){
         	  console.log(error);
           }
       });
+
+      $("#img-holder").remove();
      });
    }
 }
