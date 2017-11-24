@@ -42,7 +42,6 @@ public class Register extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		int dd = Integer.parseInt(request.getParameter("dd"));
-		System.out.println(request.getParameter("mm"));
 		int mm = getMonth(request.getParameter("mm").toUpperCase());
 		if(mm == 0)
 			return;
@@ -53,7 +52,6 @@ public class Register extends HttpServlet {
 		long time = cal.getTimeInMillis();
 		
 		char gender = request.getParameter("gender").charAt(0);
-		System.out.println(request.getParameter("gender"));
 		if(gender != 'M' && gender != 'F'){
 			return;
 		}
@@ -65,6 +63,8 @@ public class Register extends HttpServlet {
 		else{
 			obj.put("status",false);
 		}
+		
+		response.getWriter().print(obj);
 	}
 	
 	private int getMonth(String MMM){

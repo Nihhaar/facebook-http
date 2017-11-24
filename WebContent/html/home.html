@@ -25,7 +25,7 @@
   <body>
 
     <!-- Navbar (top bar) -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="navbar">
       <a class="navbar-brand" href="#">Facebook</a>
       <div class="input-group mr-auto" id="search-group">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search" aria-describedby="search-icon">
@@ -46,7 +46,7 @@
               <a class="dropdown-item" href="#">News Feed Preferences</a>
               <a class="dropdown-item" href="#">Settings</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Log out</a>
+              <a class="dropdown-item" href="#" id="logout">Log out</a>
             </div>
           </li>
         </ul>
@@ -58,7 +58,7 @@
 
       <!-- Left bar -->
       <div id="leftbar">
-        <input type='file' id='getfile1' class="hidden" name="background-image" />
+        <input type='file' id='getfile1' class="hidden" name="background-image" accept="image/*" />
         <img src="../images/bg.jpg" alt="..." id="profilepic" class="rounded-circle">
         <div id="username">Nihhaar</div>
         <hr class="hr-style-one">
@@ -123,7 +123,7 @@
           <div class="card-header">Compose post</div>
           <div class="card-body">
             <textarea id="post-text" class="card-text" rows="3" cols="50" placeholder="What's on your mind?"></textarea>
-            <input type='file' id='getfile2' class="hidden" name="background-image" />
+            <input type='file' id='getfile2' class="hidden" name="background-image" accept="image/*" />
             <a href="#" id="upload" class="card-link">Photo/Video</a>
             <a href="#" class="card-link">Feeling/Activity</a>
             <button class="btn btn-primary" id="post_btn">Post</button>
@@ -135,9 +135,22 @@
             <h4 class="card-title">Card title</h4>
             <h6 class="card-subtitle text-muted">Card subtitle</h6>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <hr class="hr-style-two" />
+            <div class="post-footer">
+              <span class="post-footer-link"><a class="like" href="#">Like</a></span>
+              <span class="post-footer-link"><a class="comment" href="#">Comment</a></span>
+              <span class="post-footer-link"><a class="share" href="#">Share</a></span>
+            </div>
+            <div class="comments">
+              <div><span class="commentor">Nihhaar</span><input type="text" class="addComment" placeholder="Write a comment..." /></div>
+              <div><span class="commentor">Nihhaar</span><span class="commenttext">Hello everyone<br /><a class="reply" href="#">Reply .</a><a class="view-reply" href="#">1 Reply</a></span></div>
+              <div class="hidden"></div>
+            </div>
           </div>
         </div>
+
       </div>
+
     </div>
 
     <!-- jQuery library -->
@@ -151,6 +164,8 @@
     <script src="../js/deps/jquery-mousewheel.js" type="text/javascript"></script>
     <script src="../js/scrollbar.js" type="text/javascript"></script>
     <script src="../js/antiscroll.js" type="text/javascript"></script>
+    <!-- Image Compressor -->
+    <script src="../js/image-compressor.min.js" type="text/javascript"></script>
     <!-- Our own js -->
     <script src="../js/home.js"></script>
 

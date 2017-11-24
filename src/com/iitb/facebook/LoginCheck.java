@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class LoginCheck
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/LoginCheck")
+public class LoginCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public LoginCheck() {
         super();
     }
 
@@ -29,28 +29,31 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+		PrintWriter out = response.getWriter();	
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");	
+		JSONObject obj = new JSONObject();
+		if (request.getSession(false) == null) 
+		{
+			obj.put("status", false);
+			obj.put("message", "Invalid session");
+			out.print(obj);
+			return;
+		}
+		else 
+		{
+			obj.put("status", true);
+			obj.put("message", "Valid session");
+			out.print(obj);
+			return;
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getSession(false) != null){
-			/* Session already exists, redirect him to home */
-			System.out.println("Session already exists! Redirecting to homepage");
-			JSONObject obj = new JSONObject();
-			obj.put("status",true);		
-			response.getWriter().print(obj);
-		}
-		else{
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
-			response.setContentType("application/json");
-		    response.setCharacterEncoding("UTF-8");
-			PrintWriter out = response.getWriter();	
-			out.print(DbHandler.authenticate(email, password, request));
-		}
+		doGet(request, response);
 	}
 
 }

@@ -11,10 +11,11 @@ $("#register_btn").click(function(e){
 			dd: $("#day").prev().text(),
 			mm: $("#month").prev().text(),
 			yyyy: $("#year").prev().text(),
-			gender: $('input[name=gender]:checked', '#registerForm').val()
+			gender: $('input[name=gender]:checked', '.welcomeForm').val()
 		},
 		url: "/facebook-http/Register",
 		method: 'POST',
+		dataType: 'json',
 		success: function(response){
 			console.log(response);
 			if(response.status){

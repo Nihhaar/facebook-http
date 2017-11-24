@@ -65,10 +65,14 @@ public class CreatePost extends HttpServlet {
 	        	post = Utils.convertStreamToString(ps);
 	        	ps.close();
         	}
+	        else{
+	        	System.out.println("No post text!");
+	        }
 	        
 	        if(imgPart == null){
+	        	System.out.println("No Image Part");
 	        	obj.put("status", false);
-				obj.put("data","Image has to be present");
+				obj.put("data", "No image is present");
 				out.print(obj);
 	        	return;
 	        }
@@ -83,14 +87,14 @@ public class CreatePost extends HttpServlet {
 		        	DbHandler.insertImage(postid, imgsuffix);
 	        	}
 	        	else{
-	        		obj.put("status",false);
+	        		obj.put("status", false);
 					obj.put("message", "Unable to create post");
 	        	}
 	        }
 	        
 	        /* Close the streams and print output */
+	        out.print(obj);
 			out.close();
-			out.print(obj);
 		}
 	}
 

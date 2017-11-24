@@ -16,8 +16,13 @@ body{
   height: 30px;
 }
 
+#navbar{
+  height: 50px;
+}
+
 #main{
   width: 100%;
+  margin-top: 50px;
 }
 
 #leftbar{
@@ -99,6 +104,13 @@ body{
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
 }
 
+.hr-style-two{
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 #newsfeed{
   margin-left: 20%;
   width: 700px;
@@ -135,6 +147,17 @@ body{
   outline: none !important;
 }
 
+.post-card-img{
+  height: 450px;
+  border: 1px solid #aaa;
+  background: url('');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
 #post_btn{
   padding: 1px 10px;
   float: right;
@@ -151,4 +174,65 @@ body{
 
 .hidden{
   display: none;
+}
+
+.post-footer-link{
+  margin-right: 30px;
+}
+
+.addComment{
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  padding-left: 20px;
+  border-radius: 20px;
+  width: 500px;
+}
+
+input:focus{
+    outline: none;
+}
+
+.each-comment{
+  margin-bottom: 20px;
+}
+
+.commenttext{
+  padding-left: 20px;
+}
+
+.comments{
+  margin-top: 30px;
+}
+
+.commentor{
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 5px;
+  color: #3B5998;
+}
+
+.reply, .view-reply{
+  font-size: 0.8em;
+  padding-right: 5px;
+}
+
+.view-reply::before{
+  content: url('../glyphicons/glyphicons-435-redo.png');
+  padding-right: 4px;
+}
+
+.reply-div{
+  margin-left: 50px;
+  padding-left: 10px;
+  border-left: 1px solid #000;
+}
+
+a.like::before{
+  content: "";
+  background-image: url('../images/fb-post-glyphicons.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: -34px -467px;
+  display: inline-block;
+  position: relative;
 }
