@@ -213,12 +213,12 @@ input:focus{
 
 .reply, .view-reply{
   font-size: 0.8em;
-  padding-right: 5px;
+  padding-right: 8px;
 }
 
 .view-reply::before{
   content: url('../glyphicons/glyphicons-435-redo.png');
-  padding-right: 4px;
+  padding-right: 5px;
 }
 
 .reply-div{
@@ -236,3 +236,10 @@ a.like::before{
   display: inline-block;
   position: relative;
 }
+
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; cursor: pointer;}
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }

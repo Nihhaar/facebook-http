@@ -11,7 +11,8 @@ $("#login_btn").click(function(e){
 		success: function(response){
 			console.log(response);
 			if(response.status){
-				window.location.href = "http://localhost:8080/facebook-http/html/home.html";
+				var id = response.data;
+				window.location.href = "http://localhost:8080/facebook-http/html/home.html?id=" + id;
 			}
 		},
 		error: function(error){

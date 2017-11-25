@@ -258,6 +258,47 @@ public class DbHandler {
 		return obj;
 	}
 	
+	public static JSONArray getSuggestions(String query){
+		JSONArray jsonarr = new JSONArray();
+		query = "%" + query + "%";
+		try (
+			    Connection conn = DriverManager.getConnection(connString, userName, passWord);
+				PreparedStatement pSt = conn.prepareStatement("SELECT firstname, uid FROM fbuser WHERE firstname ILIKE ? OR surname ILIKE ? OR email ILIKE ?;");
+			)
+			{	
+				pSt.setString(1, query);
+				pSt.setString(2, query);
+				pSt.setString(3, query);
+				ResultSet rs = pSt.executeQuery();
+				while(rs.next()){
+					JSONObject obj = new JSONObject();
+					obj.put("value", rs.getString("firstname"));
+					obj.put("data", rs.getInt("uid"));
+					jsonarr.put(obj);
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return jsonarr;
+	}
+	
+	public static String getUserName(int userid){
+		String name = "User";
+		try (
+			    Connection conn = DriverManager.getConnection(connString, userName, passWord);
+				PreparedStatement pSt = conn.prepareStatement("SELECT firstname FROM fbuser WHERE uid = ?");
+			)
+			{	
+				pSt.setInt(1, userid);
+				ResultSet rs = pSt.executeQuery();
+				rs.next();
+				name = rs.getString("firstname");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return name;
+	}
+	
 	public static JSONObject deauth(HttpServletRequest request)
 	{
 		JSONObject obj = new JSONObject();

@@ -10,7 +10,7 @@ getUserName();
 infiniteScroll();
 
 /* Get followed Posts - First 10(default) posts */
-getFollowedPosts();
+getUserPosts();
 
 function getUserID(){
 	var vars = {};
@@ -31,7 +31,7 @@ function getUserName(){
 		dataType: 'json',
 		success: function(response){
 			console.log(response);
-			username = response.data;
+			$("#name_1").text(response.data);
 		},
 		error: function(error){
 			console.log(error);
@@ -47,7 +47,7 @@ function infiniteScroll(){
 		var theWindow = $(this);
 		var theContainer = $('body');
 		if ( theWindow.scrollTop() >= theContainer.height() - theWindow.height() - tweak ) {
-			getFollowedPosts();
+			getUserPosts();
 		}
 	});
 }
@@ -55,13 +55,14 @@ function infiniteScroll(){
 /*
  * Creates all the followed posts and places it in content div.
  */
-function getFollowedPosts(){
+function getUserPosts(){
 	$.ajax({
 		data: {
 			limit: maxposts,
-			offset: count
+			offset: count,
+			userid: userid
 		},
-		url: '/facebook-http/GetPosts',
+		url: '/facebook-http/GetUserPosts',
 		type: 'POST',
 		dataType: 'json',
 		success: function(response){
